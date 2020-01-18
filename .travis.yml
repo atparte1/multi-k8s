@@ -2,6 +2,7 @@ sudo: required
 services: 
     - docker
 before_install:
+    - chmod 0555 ./node_modules/.bin/jest
     - docker build -t atparte1/react-test -f ./client/Dockerfile.dev ./client
 script:
     - docker run -e CI=true atparte1/react-test npm run test -- --coverage
