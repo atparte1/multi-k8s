@@ -4,7 +4,7 @@ services:
 before_install:
     - docker build -t atparte1/react-test -f ./client/Dockerfile.dev ./client
 script:
-    - docker run -e CT=true atparte1/react-test npm run test -- --coverage
+    - docker run -e CI=true atparte1/react-test npm run test -- --coverage
 after_success:
     - docker build -t atparte1/multi-client ./client
     - docker build -t atparte1/multi-nginx ./nginx
