@@ -3,6 +3,7 @@ services:
     - docker
 before_install:
     - chmod 0755 ./client/node_modules/.bin/jest
+    - chmod +x ./client/node_modules/.bin/react-scripts
     - docker build -t atparte1/react-test -f ./client/Dockerfile.dev ./client
 script:
     - docker run -e CI=true atparte1/react-test npm run test -- --coverage
