@@ -33,20 +33,23 @@ class Fib extends Component{
         });
         this.setState({index: ''});
     };
-    redenderSeendIndexes(){
+    rendenderSeenIndexes(){
         return this.state.seenIndexes.map(({number}) => number).join(', ');
     }
 
-    rederValues(){
-        const entries = [];
 
-        for(let key in this.state.values){
-            entries.push(
-                <div key={key}>
-                 for index {key} I calculated {this.state.values[key]}
-                 </div>
-            )
+    renderValues() {
+        const entries = [];
+    
+        for (let key in this.state.values) {
+          entries.push(
+            <div key={key}>
+              For index {key} I calculated {this.state.values[key]}
+            </div>
+          );
         }
+    
+        return entries;
     }
     render(){
         return(
@@ -60,9 +63,9 @@ class Fib extends Component{
                     <button>Submit</button>
                 </form>
                 <h3>Index I have seen:</h3>
-                {this.redenderSeendIndexes()}
+                {this.rendenderSeenIndexes()}
                 <h3>Calculated values</h3>
-                {this.rederValues()}
+                {this.renderValues()}
             </div>
         )
     }
