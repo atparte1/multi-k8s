@@ -15,6 +15,8 @@ before_install:
     - gcloud config set compute/zone asia-south1-a
     - gcloud container clusters get-credentials multi-k8s
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+    - chmod 0755 ./client/node_modules/.bin/jest
+    - chmod +x ./client/node_modules/.bin/react-scripts
     - docker build -t atparte1/react-test -f ./client/Dockerfile.dev ./client
 script:
     - docker run -e CI=true atparte1/react-test npm run test
