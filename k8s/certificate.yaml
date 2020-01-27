@@ -1,0 +1,20 @@
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: Certificate
+metadata:
+    name: pirantees-co-in-tls
+spec:
+    secretName: pirantees-co-in
+    issuerRef: 
+        name: letsencrypt-prod
+        kind: ClusterIssuer
+    commonName: pirantees.co.in
+    dnsNames:
+        - pirantees.co.in
+        - www.pirantees.co.in
+    acme:
+        config:
+            - http01:
+                    ingressClass: nginx
+                    domains:
+                        - pirantees.co.in
+                        - www.pirantees.co.in
